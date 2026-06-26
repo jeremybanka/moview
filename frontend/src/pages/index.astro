@@ -1,5 +1,6 @@
 ---
-import WelcomePanel from "../components/WelcomePanel"
+import AppShell from "../app/AppShell"
+import "../styles/globals.css"
 ---
 
 <html lang="en">
@@ -12,8 +13,6 @@ import WelcomePanel from "../components/WelcomePanel"
 		<title>Moview</title>
 	</head>
 	<body>
-		<main>
-			<WelcomePanel client:load />
-		</main>
+		<AppShell client:only="preact" />
 	</body>
 </html>

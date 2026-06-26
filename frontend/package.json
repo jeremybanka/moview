@@ -9,8 +9,11 @@
 	"scripts": {
 		"dev": "astro dev --background",
 		"build": "astro build",
+		"lint": "bun run lint:types",
+		"lint:types": "tsc --noEmit --project tsconfig.json",
 		"preview": "astro preview",
-		"astro": "astro"
+		"astro": "astro",
+		"test:once": "bun test"
 	},
 	"dependencies": {
 		"@astrojs/preact": "latest",

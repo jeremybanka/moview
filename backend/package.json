@@ -3,6 +3,13 @@
 	"module": "index.ts",
 	"type": "module",
 	"private": true,
+	"scripts": {
+		"build": "bun build ./index.ts --outdir dist --target bun",
+		"dev": "bun --watch ./index.ts",
+		"lint": "bun run lint:types",
+		"lint:types": "tsc --noEmit",
+		"test:once": "bun test"
+	},
 	"devDependencies": {
 		"@types/bun": "latest",
 		"drizzle-kit": "0.31.10"

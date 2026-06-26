@@ -26,5 +26,7 @@
 		"noUnusedLocals": false,
 		"noUnusedParameters": false,
 		"noPropertyAccessFromIndexSignature": false
-	}
+	},
+	"include": ["backend/**/*.ts", "celilo/**/*.ts", "types/**/*.d.ts"],
+	"exclude": ["backend/dist", "frontend", "drizzle.config.ts"]
 }

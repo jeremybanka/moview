@@ -1,6 +1,7 @@
 # Moview Full App Implementation Plan
 
 ## Summary
+
 Build Moview as a full-stack Bun workspace app: Astro/Preact frontend, Bun backend with oRPC, Drizzle over Bun SQLite, TMDB movie enrichment, two auth modes, and a Celilo deployment module with end-to-end deployment validation.
 
 The first completed review target is a locally usable full app covering the README stories, plus deployable Celilo packaging and E2E smoke coverage.

@@ -62,3 +62,4 @@ Now, let's make an app. This app is a place for friends who have a running "movi
 - validate login with smoke-test user
 - create first admin account
 - make password for the admin account available to the operator
+- test the _entire_ deployment, end-to-end with @celilo/e2e

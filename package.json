@@ -1,0 +1,26 @@
+{
+  "name": "moview",
+  "module": "index.ts",
+  "type": "module",
+  "private": true,
+  "workspaces": [
+    "frontend",
+    "backend"
+  ],
+  "scripts": {
+    "dev": "bun run --filter @moview/frontend dev",
+    "build": "bun run --workspaces --if-present build",
+    "preview": "bun run --filter @moview/frontend preview",
+    "frontend": "bun run --filter @moview/frontend",
+    "backend": "bun run --filter @moview/backend"
+  },
+  "devDependencies": {
+    "@celilo/cli": "0.8.1",
+    "@celilo/e2e": "0.7.16",
+    "@types/bun": "latest",
+    "agents.yaml": "0.2.2"
+  },
+  "peerDependencies": {
+    "typescript": "^5"
+  }
+}

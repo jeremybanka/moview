@@ -15,8 +15,8 @@
     "backend": "bun run --filter @moview/backend"
   },
   "devDependencies": {
-    "@celilo/cli": "0.8.1",
-    "@celilo/e2e": "0.7.16",
+    "@celilo/cli": "0.8.2",
+    "@celilo/e2e": "0.7.17",
     "@types/bun": "latest",
     "agents.yaml": "0.2.2"
   },

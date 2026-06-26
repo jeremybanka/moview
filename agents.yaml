@@ -6,5 +6,9 @@ documents:
     description: zero-runtime structural css for jsx with css modules
   - path: ./frontend/node_modules/treetrunks/AGENTS.md
     description: Lean utilities to build type-safe trees and validate routes through them.
+  - path: ./node_modules/@celilo/cli/AGENTS.md
+    description: Celilo — home lab orchestration CLI
+  - path: ./node_modules/@celilo/e2e/AGENTS.md
+    description: E2E test infrastructure for Celilo-deployed applications. Provides a simulated internet with DNS hierarchy, ACME server, firewalls, and target machines in Docker.
   - path: ./node_modules/agents.yaml/AGENTS.md
     description: A CLI for discovering and curating agent-readable documentation in agents.yaml.

@@ -13,6 +13,7 @@
   "dependencies": {
     "@js-temporal/polyfill": "0.5.1",
     "@orpc/server": "1.14.6",
+    "@t3-oss/env-core": "0.13.11",
     "drizzle-orm": "0.45.2",
     "socket.io": "4.8.3",
     "zod": "4.4.3"

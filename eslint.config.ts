@@ -86,26 +86,9 @@ const COMMON: Linter.Config = {
 	rules: COMMON_RULES,
 }
 
-const NO_CONSOLE: Linter.Config = {
-	files: [`**/src/**/*.{ts,tsx}`, `**/__tests__/**/*.{ts,tsx}`],
-	rules: { "no-console": ERROR },
-}
-
-const PUBLIC_TESTS: Linter.Config = {
-	files: [`packages/atom.io/__tests__/public/**/*.ts{,x}`],
-	rules: {
-		"import/no-internal-modules": [
-			ERROR,
-			{
-				forbid: [`atom.io/internal`, `atom.io/internal/**`],
-			},
-		],
-	},
-}
-
 const LASERTAG_ASTRO: Linter.Config = {
 	languageOptions: ASTRO_LANG_OPTIONS,
-	files: [`apps/atom.io.fyi/src/**/*.astro`],
+	files: [`frontend/**/*.astro`],
 	ignores: [],
 	plugins: {
 		astro: AstroPlugin,
@@ -116,7 +99,7 @@ const LASERTAG_ASTRO: Linter.Config = {
 }
 
 const LASERTAG_TSX: Linter.Config = {
-	files: [`apps/atom.io.fyi/src/**/*.tsx`],
+	files: [`frontend/**/*.tsx`],
 	ignores: [],
 	plugins: { lasertag: LasertagPlugin },
 	rules: LASERTAG_RULES,
@@ -125,8 +108,6 @@ const LASERTAG_TSX: Linter.Config = {
 export default [
 	IGNORES,
 	COMMON,
-	NO_CONSOLE,
-	PUBLIC_TESTS,
 	LASERTAG_ASTRO,
 	LASERTAG_TSX,
 ] satisfies Linter.Config[]

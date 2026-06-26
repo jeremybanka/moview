@@ -1,16 +1,17 @@
 import { useI, useO } from "atom.io/react"
+import type { VNode } from "preact"
 import { useEffect, useMemo, useState } from "preact/hooks"
 
 import css from "./AppShell.module.css"
 import {
 	activeViewAtom,
 	historySortAtom,
+	type MoviewSnapshot,
 	personalMoviesSelector,
 	poolMoviesSelector,
 	selectedUserIdAtom,
 	snapshotAtom,
 	sortedHistorySelector,
-	type MoviewSnapshot,
 } from "./state"
 
 const apiBase = typeof window === `undefined` ? `` : window.location.origin.replace(`:4321`, `:3000`)
@@ -36,7 +37,7 @@ function average(values: Array<number | null>): string {
 	return (real.reduce((sum, value) => sum + value, 0) / real.length).toFixed(1)
 }
 
-export default function AppShell() {
+export default function AppShell(): VNode {
 	const snapshot = useO(snapshotAtom)
 	const setSnapshot = useI(snapshotAtom)
 	const selectedUserId = useO(selectedUserIdAtom)

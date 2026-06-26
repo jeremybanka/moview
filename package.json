@@ -1,44 +1,53 @@
 {
-  "name": "moview",
-  "module": "index.ts",
-  "type": "module",
-  "private": true,
-  "workspaces": [
-    "frontend",
-    "backend"
-  ],
-  "scripts": {
-    "dev": "bun run --filter @moview/frontend dev",
-    "build": "bun run --workspaces --if-present build",
-    "preview": "bun run --filter @moview/frontend preview",
-    "frontend": "bun run --filter @moview/frontend",
-    "backend": "bun run --filter @moview/backend"
-  },
-  "devDependencies": {
-    "@celilo/cli": "0.8.2",
-    "@celilo/e2e": "0.7.17",
-    "@dprint/json": "0.21.3",
+	"name": "moview",
+	"module": "index.ts",
+	"type": "module",
+	"private": true,
+	"workspaces": [
+		"frontend",
+		"backend"
+	],
+	"scripts": {
+		"build": "dotenvx run -- turbo run build",
+		"dev": "dotenvx run -- turbo run dev",
+		"fmt": "dprint fmt .",
+		"fmt:check": "dprint check .",
+		"hooks:install": "mise x -- hk install --mise",
+		"lint": "dotenvx run -- turbo run lint",
+		"lint:deps": "pin-checker --ignore-workspaces",
+		"lint:eslint": "dotenvx run -- turbo run lint:eslint",
+		"lint:fix:eslint": "eslint --fix .",
+		"lint:oxlint": "dotenvx run -- turbo run lint:oxlint",
+		"lint:types": "dotenvx run -- turbo run lint:types",
+		"test": "CI=true dotenvx run -- turbo run test:once --concurrency=2"
+	},
+	"devDependencies": {
+		"@celilo/cli": "0.8.2",
+		"@celilo/e2e": "0.7.17",
+		"@dotenvx/dotenvx": "1.75.1",
+		"@dprint/json": "0.21.3",
 		"@dprint/markdown": "0.22.1",
 		"@dprint/oxc": "0.28.0",
 		"@dprint/toml": "0.7.0",
-    "@types/bun": "latest",
-    "@typescript-eslint/parser": "8.62.0",
-    "@typescript-eslint/utils": "8.62.0",
-    "agents.yaml": "0.2.2",
-    "astro-eslint-parser": "2.1.0",
-    "atom.io": "0.49.5",
-    "dprint": "0.54.0",
+		"@types/bun": "latest",
+		"@typescript-eslint/parser": "8.62.0",
+		"@typescript-eslint/utils": "8.62.0",
+		"agents.yaml": "0.2.2",
+		"astro-eslint-parser": "2.1.0",
+		"atom.io": "0.49.5",
+		"dprint": "0.54.0",
 		"dprint-plugin-malva": "0.16.0",
 		"dprint-plugin-markup": "0.27.3",
 		"dprint-plugin-yaml": "0.6.0",
-    "eslint": "10.6.0",
-    "eslint-plugin-astro": "2.1.1",
-    "eslint-plugin-import-x": "4.17.0",
-    "eslint-plugin-simple-import-sort": "13.0.0",
-    "lasertag": "0.1.5",
-    "oxlint": "1.71.0"
-  },
-  "peerDependencies": {
-    "typescript": "^5"
-  }
+		"eslint": "10.6.0",
+		"eslint-plugin-astro": "2.1.1",
+		"eslint-plugin-import-x": "4.17.0",
+		"eslint-plugin-simple-import-sort": "13.0.0",
+		"lasertag": "0.1.5",
+		"oxlint": "1.71.0",
+		"turbo": "2.10.0"
+	},
+	"peerDependencies": {
+		"typescript": "^5"
+	}
 }

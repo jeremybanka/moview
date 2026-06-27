@@ -1,12 +1,12 @@
 import * as tsParser from "@typescript-eslint/parser"
 import * as astroParser from "astro-eslint-parser"
+import AtomIOPlugin from "atom.io/eslint-plugin"
 import type { Linter } from "eslint"
 import AstroPlugin from "eslint-plugin-astro"
 import * as ImportPlugin from "eslint-plugin-import-x"
 import { default as SimpleImportSortPlugin } from "eslint-plugin-simple-import-sort"
 import LasertagPlugin from "lasertag/eslint-plugin"
 
-import AtomIOPlugin from "atom.io/eslint-plugin"
 import { LINT_IGNORES } from "./scripts/lint-common.ts"
 
 type Rules = Linter.Config[`rules`]

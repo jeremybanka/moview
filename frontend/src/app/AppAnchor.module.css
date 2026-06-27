@@ -1,8 +1,0 @@
-.class {
-	display: contents;
-
-	> a {
-		color: inherit;
-		text-decoration-color: currentColor;
-	}
-}

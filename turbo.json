@@ -12,6 +12,7 @@
 		"lint": {
 			"dependsOn": ["lint:types"]
 		},
+		"lint:eslint": {},
 		"lint:types": {},
 		"test:once": {}
 	}

@@ -37,7 +37,7 @@ function average(values: Array<number | null>): string {
 	return (real.reduce((sum, value) => sum + value, 0) / real.length).toFixed(1)
 }
 
-export default function AppShell(): VNode {
+export function AppShell(): VNode {
 	const snapshot = useO(snapshotAtom)
 	const setSnapshot = useI(snapshotAtom)
 	const selectedUserId = useO(selectedUserIdAtom)
@@ -120,7 +120,7 @@ export default function AppShell(): VNode {
 	}
 
 	return (
-		<moview-app className={css.class}>
+		<app-shell className={css.class}>
 			<header>
 				<nav aria-label="Moview sections">
 					<strong>Moview</strong>
@@ -181,16 +181,16 @@ export default function AppShell(): VNode {
 							{poolMovies.map((movie) => (
 								<article key={movie.id}>
 									{movie.posterPath ? <img alt="" src={movie.posterPath} /> : <movie-poster>{movie.title.slice(0, 2)}</movie-poster>}
-									<header>
+									<movie-card-heading>
 										<h2>{movie.title}</h2>
 										<span>{movie.year ?? `Manual`}</span>
-									</header>
+									</movie-card-heading>
 									<p>{movie.description}</p>
-									<footer>
+									<movie-card-actions>
 										<span>{movie.advocates.length} advocates</span>
 										<button type="button" onClick={() => void queueMovie(movie.id, `on-deck`)}>On deck</button>
 										<button type="button" onClick={() => void queueMovie(movie.id, `second`)}>Second</button>
-									</footer>
+									</movie-card-actions>
 								</article>
 							))}
 						</movie-grid>
@@ -282,6 +282,6 @@ export default function AppShell(): VNode {
 					</section>
 				) : null}
 			</main>
-		</moview-app>
+		</app-shell>
 	)
 }

@@ -147,7 +147,7 @@
 						font-weight: 800;
 					}
 
-					> header {
+					> movie-card-heading {
 						display: flex;
 						gap: 10px;
 						align-items: baseline;
@@ -173,7 +173,7 @@
 						line-height: 1.45;
 					}
 
-					> footer {
+					> movie-card-actions {
 						display: flex;
 						flex-wrap: wrap;
 						gap: 8px;

@@ -66,6 +66,16 @@ export interface MoviewSnapshot {
 	turnOrder: MoviewTurnEntry[]
 }
 
+export type PoolMovie = MoviewMovie & {
+	advocates: MoviewAdvocate[]
+	queueEntry: MoviewQueueEntry | undefined
+}
+
+export interface PersonalMovie {
+	advocate: MoviewAdvocate
+	movie: MoviewMovie
+}
+
 export const seededSnapshot: MoviewSnapshot = {
 	advocates: [
 		{ advocateNumber: 1, id: `adv-dune-jeremy`, movieId: `movie-dune`, rank: 1, userId: `user-jeremy` },
@@ -170,25 +180,25 @@ export const seededSnapshot: MoviewSnapshot = {
 
 export const snapshotAtom = atom<MoviewSnapshot>({
 	default: seededSnapshot,
-	key: `moview.snapshot`,
+	key: `snapshot`,
 })
 
 export const selectedUserIdAtom = atom<string>({
 	default: `user-jeremy`,
-	key: `moview.selectedUserId`,
+	key: `selectedUserId`,
 })
 
 export const activeViewAtom = atom<`pool` | `personal` | `queue` | `turns` | `review` | `history`>({
 	default: `pool`,
-	key: `moview.activeView`,
+	key: `activeView`,
 })
 
 export const historySortAtom = atom<`date_watched` | `goodness_of_pick` | `rating`>({
 	default: `date_watched`,
-	key: `moview.historySort`,
+	key: `historySort`,
 })
 
-export const poolMoviesSelector = selector({
+export const poolMoviesSelector = selector<PoolMovie[]>({
 	get: ({ get }) => {
 		const snapshot = get(snapshotAtom)
 		return snapshot.movies
@@ -199,10 +209,10 @@ export const poolMoviesSelector = selector({
 			}))
 			.sort((a, b) => a.title.localeCompare(b.title))
 	},
-	key: `moview.poolMovies`,
+	key: `poolMovies`,
 })
 
-export const personalMoviesSelector = selector({
+export const personalMoviesSelector = selector<PersonalMovie[]>({
 	get: ({ get }) => {
 		const snapshot = get(snapshotAtom)
 		const selectedUserId = get(selectedUserIdAtom)
@@ -213,12 +223,12 @@ export const personalMoviesSelector = selector({
 				advocate,
 				movie: snapshot.movies.find((movie) => movie.id === advocate.movieId),
 			}))
-			.filter((entry) => entry.movie)
+			.filter((entry): entry is PersonalMovie => entry.movie !== undefined)
 	},
-	key: `moview.personalMovies`,
+	key: `personalMovies`,
 })
 
-export const sortedHistorySelector = selector({
+export const sortedHistorySelector = selector<MoviewHistoryEntry[]>({
 	get: ({ get }) => {
 		const snapshot = get(snapshotAtom)
 		const sort = get(historySortAtom)
@@ -232,5 +242,5 @@ export const sortedHistorySelector = selector({
 			return b.dateWatched.localeCompare(a.dateWatched)
 		})
 	},
-	key: `moview.sortedHistory`,
+	key: `sortedHistory`,
 })

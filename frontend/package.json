@@ -10,6 +10,7 @@
 		"dev": "astro dev --background",
 		"build": "astro build",
 		"lint": "bun run lint:types",
+		"lint:eslint": "eslint .",
 		"lint:types": "tsc --noEmit --project tsconfig.json",
 		"preview": "astro preview",
 		"astro": "astro",

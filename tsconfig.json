@@ -28,9 +28,9 @@
 		"noPropertyAccessFromIndexSignature": false
 	},
 	"include": [
-		"backend/**/*.ts",
 		"celilo/**/*.ts",
 		"types/**/*.d.ts",
+		"scripts/**/*.ts",
 		"**/*.config.ts"
 	],
 	"exclude": ["backend/dist", "frontend", "drizzle.config.ts"]

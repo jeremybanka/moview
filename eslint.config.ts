@@ -1,8 +1,6 @@
 import * as tsParser from "@typescript-eslint/parser"
-import * as astroParser from "astro-eslint-parser"
 import AtomIOPlugin from "atom.io/eslint-plugin"
 import type { Linter } from "eslint"
-import AstroPlugin from "eslint-plugin-astro"
 import * as ImportPlugin from "eslint-plugin-import-x"
 import { default as SimpleImportSortPlugin } from "eslint-plugin-simple-import-sort"
 import LasertagPlugin from "lasertag/eslint-plugin"
@@ -20,15 +18,6 @@ const TS_LANG_OPTIONS: Linter.Config[`languageOptions`] = {
 		projectService: true,
 		sourceType: `module`,
 	} satisfies tsParser.ParserOptions,
-}
-
-const ASTRO_LANG_OPTIONS: Linter.Config[`languageOptions`] = {
-	parser: astroParser,
-	parserOptions: {
-		parser: tsParser,
-		sourceType: `module`,
-		extraFileExtensions: [`.astro`],
-	},
 }
 
 const COMMON_RULES: Rules = {
@@ -86,18 +75,6 @@ const COMMON: Linter.Config = {
 	rules: COMMON_RULES,
 }
 
-const LASERTAG_ASTRO: Linter.Config = {
-	languageOptions: ASTRO_LANG_OPTIONS,
-	files: [`frontend/**/*.astro`],
-	ignores: [],
-	plugins: {
-		astro: AstroPlugin,
-		lasertag: LasertagPlugin,
-	},
-	rules: LASERTAG_RULES,
-	processor: `astro/client-side-ts`,
-}
-
 const LASERTAG_TSX: Linter.Config = {
 	files: [`frontend/**/*.tsx`],
 	ignores: [],
@@ -105,9 +82,16 @@ const LASERTAG_TSX: Linter.Config = {
 	rules: LASERTAG_RULES,
 }
 
+const TYPE_DECLARATIONS: Linter.Config = {
+	files: [`**/*.d.ts`],
+	rules: {
+		quotes: 0,
+	},
+}
+
 export default [
 	IGNORES,
 	COMMON,
-	LASERTAG_ASTRO,
+	TYPE_DECLARATIONS,
 	LASERTAG_TSX,
 ] satisfies Linter.Config[]

@@ -1,6 +1,6 @@
 # build output
 dist/
-# generated types
+# legacy generated types
 .astro/
 
 # dependencies

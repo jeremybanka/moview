@@ -71,3 +71,19 @@ Now, let's make an app. This app is a place for friends who have a running "movi
 - create first admin account
 - make password for the admin account available to the operator
 - test the _entire_ deployment, end-to-end with @celilo/e2e
+
+# Guidance
+
+- Model e2e tests off of the ones in ~/lunacyle/e2e
+- Do SPA routing according to atom.io's docs. Use treetrunks. Make routes, not views.
+- Make a component file for each route.
+- Use lasertag thoroughly. Use its shipped types and its guidance on dark-mode first, variables for color
+- Design for mobile-first collapsible, single-column layouts with min-height 100svh for the body. Bottom nav.
+- Set up drizzle in the backend.
+
+# Acceptance Criteria
+
+- App boots
+- Playwright tests pass for each story
+- No console errors
+- e2e tests must include minting the Bug User in Authentik, logging in, and visiting every route as the Bug user in @testing-library

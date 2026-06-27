@@ -1,10 +1,11 @@
 {
-	"extends": "astro/tsconfigs/strict",
+	"extends": "../tsconfig.json",
 	"compilerOptions": {
+		"lib": ["DOM", "DOM.Iterable", "ESNext"],
 		"jsx": "react-jsx",
 		"jsxImportSource": "preact",
-		"types": ["bun", "preact"]
+		"types": ["bun", "preact", "vite/client"]
 	},
-	"include": [".astro/types.d.ts", "**/*"],
+	"include": ["src", "vite.config.ts"],
 	"exclude": ["dist"]
 }

@@ -26,9 +26,38 @@
 			gap: 8px;
 			align-items: center;
 
-			> strong {
+			> a {
+				color: inherit;
+				text-decoration: none;
+			}
+
+			> a > strong {
 				margin-right: 10px;
 				font-size: 1.25rem;
+			}
+
+			> app-nav {
+				display: flex;
+				flex-wrap: wrap;
+				gap: 8px;
+				align-items: center;
+
+				> a {
+					display: inline-grid;
+					min-height: 36px;
+					align-items: center;
+					padding: 0 12px;
+					border: 1px solid transparent;
+					border-radius: 6px;
+					color: inherit;
+					text-decoration: none;
+				}
+
+				> a[aria-current="page"],
+				> a:hover {
+					border-color: #2f6f6a;
+					background: #e6f1ef;
+				}
 			}
 		}
 
@@ -42,7 +71,8 @@
 
 	button,
 	select,
-	input {
+	input,
+	textarea {
 		min-height: 36px;
 		border: 1px solid #bdb4a6;
 		border-radius: 6px;
@@ -63,8 +93,15 @@
 	}
 
 	select,
-	input {
+	input,
+	textarea {
 		padding: 0 10px;
+	}
+
+	textarea {
+		min-height: 96px;
+		padding-top: 8px;
+		resize: vertical;
 	}
 
 	label {
@@ -83,7 +120,24 @@
 		margin: 0 auto;
 		padding: 24px 0 48px;
 
-		> section:first-child {
+		> page-heading {
+			display: flex;
+			gap: 10px;
+			align-items: baseline;
+			justify-content: space-between;
+
+			> h1 {
+				margin: 0;
+				font-size: 1.7rem;
+				line-height: 1.15;
+			}
+
+			> span {
+				color: #6e665c;
+			}
+		}
+
+		stat-grid {
 			display: grid;
 			grid-template-columns: repeat(3, minmax(0, 1fr));
 			gap: 12px;
@@ -107,6 +161,30 @@
 			}
 		}
 
+		route-actions {
+			display: flex;
+			flex-wrap: wrap;
+			gap: 10px;
+			align-items: center;
+
+			> a {
+				display: inline-grid;
+				min-height: 36px;
+				align-items: center;
+				padding: 0 12px;
+				border: 1px solid #bdb4a6;
+				border-radius: 6px;
+				background: #fffdfa;
+				color: inherit;
+				text-decoration: none;
+			}
+
+			> a:hover {
+				border-color: #2f6f6a;
+				background: #e6f1ef;
+			}
+		}
+
 		> section {
 			display: grid;
 			gap: 16px;
@@ -116,6 +194,11 @@
 				flex-wrap: wrap;
 				gap: 10px;
 				align-items: end;
+			}
+
+			> article > img {
+				width: min(220px, 100%);
+				border-radius: 8px;
 			}
 
 			> movie-grid {
@@ -252,7 +335,11 @@
 		> main {
 			width: min(100vw - 20px, 1180px);
 
-			> section:first-child {
+			> page-heading {
+				display: grid;
+			}
+
+			stat-grid {
 				grid-template-columns: 1fr;
 			}
 

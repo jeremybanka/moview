@@ -1,0 +1,51 @@
+---
+import { AppShell } from "../app/AppShell"
+import "../styles/globals.css"
+
+/* eslint-disable lasertag/export-own-component-only, lasertag/render-tag-with-own-name */
+export function getStaticPaths() {
+	const groupIds = [`group-friends`, `group-moira-bug`]
+	const movieIds = [
+		`movie-dune`,
+		`movie-everything`,
+		`movie-grand-budapest`,
+		`movie-crouching`,
+		`movie-burning`,
+		`movie-tiptoes`,
+		`movie-red-baron`,
+		`movie-happily`,
+	]
+	return [
+		{ params: { path: `groups/new` } },
+		...groupIds.flatMap((groupId) => [
+			{ params: { path: `groups/${groupId}` } },
+			{ params: { path: `groups/${groupId}/pool` } },
+			{ params: { path: `groups/${groupId}/pool/add` } },
+			{ params: { path: `groups/${groupId}/personal` } },
+			{ params: { path: `groups/${groupId}/queue` } },
+			{ params: { path: `groups/${groupId}/turns` } },
+			{ params: { path: `groups/${groupId}/invites` } },
+			{ params: { path: `groups/${groupId}/history` } },
+			{ params: { path: `groups/${groupId}/review/night-everything` } },
+			{ params: { path: `groups/${groupId}/review/night-everything/summary` } },
+			...movieIds.map((movieId) => ({
+				params: { path: `groups/${groupId}/pool/${movieId}` },
+			})),
+		]),
+	]
+}
+---
+
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<link rel="icon" href="/favicon.ico" />
+		<meta name="viewport" content="width=device-width" />
+		<meta name="generator" content={Astro.generator} />
+		<title>Moview</title>
+	</head>
+	<body>
+		<AppShell client:only="preact" />
+	</body>
+</html>

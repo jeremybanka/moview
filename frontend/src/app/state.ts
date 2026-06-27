@@ -188,14 +188,19 @@ export const selectedUserIdAtom = atom<string>({
 	key: `selectedUserId`,
 })
 
-export const activeViewAtom = atom<`pool` | `personal` | `queue` | `turns` | `review` | `history`>({
-	default: `pool`,
-	key: `activeView`,
-})
-
 export const historySortAtom = atom<`date_watched` | `goodness_of_pick` | `rating`>({
 	default: `date_watched`,
 	key: `historySort`,
+})
+
+export const addMovieTitleAtom = atom<string>({
+	default: ``,
+	key: `addMovieTitle`,
+})
+
+export const addMovieYearAtom = atom<string>({
+	default: ``,
+	key: `addMovieYear`,
 })
 
 export const poolMoviesSelector = selector<PoolMovie[]>({

@@ -76,6 +76,12 @@ export interface PersonalMovie {
 	movie: MoviewMovie
 }
 
+export interface ReviewSummary {
+	goodness: string
+	rating: string
+	ready: number
+}
+
 export const seededSnapshot: MoviewSnapshot = {
 	advocates: [
 		{ advocateNumber: 1, id: `adv-dune-jeremy`, movieId: `movie-dune`, rank: 1, userId: `user-jeremy` },
@@ -249,3 +255,23 @@ export const sortedHistorySelector = selector<MoviewHistoryEntry[]>({
 	},
 	key: `sortedHistory`,
 })
+
+export const reviewSummarySelector = selector<ReviewSummary>({
+	get: ({ get }) => {
+		const history = get(snapshotAtom).history
+		return {
+			goodness: average(history.map((entry) => entry.goodnessOfPick)),
+			rating: average(history.map((entry) => entry.rating)),
+			ready: new Set(history.map((entry) => entry.reviewerId).filter(Boolean)).size,
+		}
+	},
+	key: `reviewSummary`,
+})
+
+function average(values: Array<number | null>): string {
+	const real = values.filter((value): value is number => typeof value === `number`)
+	if (real.length === 0) {
+		return `-`
+	}
+	return (real.reduce((sum, value) => sum + value, 0) / real.length).toFixed(1)
+}

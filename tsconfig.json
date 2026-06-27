@@ -27,6 +27,11 @@
 		"noUnusedParameters": false,
 		"noPropertyAccessFromIndexSignature": false
 	},
-	"include": ["backend/**/*.ts", "celilo/**/*.ts", "types/**/*.d.ts"],
+	"include": [
+		"backend/**/*.ts",
+		"celilo/**/*.ts",
+		"types/**/*.d.ts",
+		"**/*.config.ts"
+	],
 	"exclude": ["backend/dist", "frontend", "drizzle.config.ts"]
 }

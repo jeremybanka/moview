@@ -3,7 +3,7 @@
 	"compilerOptions": {
 		"jsx": "react-jsx",
 		"jsxImportSource": "preact",
-		"types": ["bun", "preact"]
+		"types": ["bun", "preact", "lasertag/preact-jsx"]
 	},
 	"include": [".astro/types.d.ts", "**/*"],
 	"exclude": ["dist"]

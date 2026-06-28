@@ -13,7 +13,8 @@
 		"lint:eslint": "eslint .",
 		"lint:types": "tsc --noEmit --project tsconfig.json",
 		"preview": "vite preview",
-		"test:once": "bun test --pass-with-no-tests"
+		"test:playwright": "bun run build && playwright test",
+		"test:once": "bun test src --pass-with-no-tests"
 	},
 	"dependencies": {
 		"@orpc/client": "1.14.6",
@@ -25,7 +26,11 @@
 		"treetrunks": "0.1.8"
 	},
 	"devDependencies": {
+		"@playwright/test": "1.61.1",
 		"@preact/preset-vite": "2.10.5",
+		"@testing-library/dom": "8.20.1",
+		"@testing-library/preact": "3.2.4",
+		"happy-dom": "20.10.6",
 		"lasertag": "0.1.5",
 		"vite": "8.1.0"
 	}

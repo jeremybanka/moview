@@ -1,0 +1,42 @@
+.class {
+	display: grid;
+	align-content: center;
+	gap: 8px;
+	min-height: 50svh;
+
+	> h1,
+	> p {
+		margin: 0;
+	}
+
+	> h1 {
+		color: var(--fg-hard-3);
+		font-size: clamp(2.6rem, 18vw, 7rem);
+		font-weight: 950;
+		letter-spacing: 0;
+		line-height: 0.88;
+		text-transform: uppercase;
+	}
+
+	> p {
+		color: var(--fg-hard-2);
+		font-size: 1.4rem;
+		font-weight: 900;
+	}
+
+	> span {
+		color: var(--fg-soft-2);
+		font-weight: 800;
+		text-transform: uppercase;
+	}
+
+	> button {
+		width: fit-content;
+		border: 1px solid var(--line-strong);
+		background: var(--surface-strong);
+		color: var(--fg-hard-2);
+		font: inherit;
+		font-weight: 900;
+		padding: 10px 14px;
+	}
+}

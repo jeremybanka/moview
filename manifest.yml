@@ -1,0 +1,118 @@
+# yaml-language-server: $schema=./node_modules/@celilo/cli/schemas/module-manifest.schema.json
+celilo_contract: "1.0"
+id: moview
+name: Moview
+version: 0.1.0
+description: Movie-night pool, queue, turn-order, and review tracker.
+version_source:
+  kind: changeset
+
+requires:
+  capabilities:
+    - name: public_web
+      version: ^1.0.0
+    - name: idp
+      version: ^1.0.0
+  system:
+    type: lxc
+    zone: app
+    cpu: 2
+    memory: 2048
+    disk: 20
+
+variables:
+  owns:
+    - name: public_hostname
+      type: string
+      required: true
+      source: user
+      default: www.moview.com
+      description: Public hostname served through Caddy.
+      pattern: ^[a-z0-9.-]+$
+    - name: service_port
+      type: integer
+      required: true
+      source: user
+      default: 3001
+      description: Port where the Moview backend listens on the app host.
+      minimum: 1
+      maximum: 65535
+    - name: smoke_test_group_slug
+      type: string
+      required: true
+      source: user
+      default: moview-moira-bug
+      description: Authentik group slug assigned to the smoke-test Bug user.
+    - name: admin_group_slug
+      type: string
+      required: true
+      source: user
+      default: moview-bmn
+      description: Authentik group slug assigned to the first admin account.
+    - name: authentik_auth_url
+      type: string
+      required: true
+      source: capability
+      derive_from: $capability:idp.auth_url
+      description: Authentik base URL supplied by the idp capability.
+    - name: smoke_test_username
+      type: string
+      required: true
+      source: user
+      default: bug
+      description: Username for the deployment smoke-test account.
+    - name: smoke_test_email
+      type: string
+      required: true
+      source: user
+      default: bug@moview.com
+      description: Email address for the deployment smoke-test account.
+    - name: admin_username
+      type: string
+      required: true
+      source: user
+      default: jeremy
+      description: First operator admin username.
+    - name: admin_email
+      type: string
+      required: true
+      source: user
+      default: jeremy@moview.com
+      description: First operator admin email address.
+  imports: []
+
+secrets:
+  declares:
+    - name: admin_password
+      required: false
+      description: Generated first-admin password, stored by celilo for the operator.
+      generate:
+        method: random
+        length: 32
+        encoding: base64
+    - name: smoke_test_password
+      required: false
+      description: Generated password for the Authentik smoke-test user.
+      generate:
+        method: random
+        length: 24
+        encoding: base64
+
+hooks:
+  on_install:
+    script: celilo/scripts/on-install.ts
+    timeout: 600
+  health_check:
+    script: celilo/scripts/health-check.ts
+    timeout: 180
+
+build:
+  command: bun install --frozen-lockfile && bun run build
+  artifacts:
+    - backend
+    - frontend/dist
+    - package.json
+    - bun.lock
+
+e2e:
+  tests_dir: e2e/tests

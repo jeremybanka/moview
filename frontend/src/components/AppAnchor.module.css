@@ -1,0 +1,12 @@
+.class {
+	display: contents;
+
+	> a {
+		color: inherit;
+		text-decoration: none;
+
+		&[aria-current="page"] {
+			color: var(--nav-active-fg);
+		}
+	}
+}

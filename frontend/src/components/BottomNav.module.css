@@ -1,0 +1,46 @@
+.class {
+	--nav-active-fg: var(--bg-color);
+
+	position: fixed;
+	z-index: 20;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	display: grid;
+	grid-template-columns: repeat(6, minmax(0, 1fr));
+	border-top: 1px solid var(--border-soft-2);
+	background: color-mix(in srgb, var(--bg-hard-1) 94%, transparent);
+	backdrop-filter: blur(18px);
+
+	> app-anchor > a {
+		display: grid;
+		min-height: 58px;
+		place-items: center;
+		padding: 6px 4px;
+		color: var(--fg-soft-2);
+		font-size: 0.72rem;
+		font-weight: 850;
+		letter-spacing: 0;
+		text-transform: uppercase;
+
+		&[aria-current="page"] {
+			background: var(--color-accent);
+		}
+	}
+}
+
+@media (min-width: 820px) {
+	.class {
+		position: sticky;
+		top: 0;
+		bottom: auto;
+		grid-template-columns: repeat(6, minmax(0, 112px));
+		justify-content: end;
+		border-top: 0;
+		border-bottom: 1px solid var(--border-soft-1);
+
+		> app-anchor > a {
+			min-height: 54px;
+		}
+	}
+}

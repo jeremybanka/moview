@@ -1,0 +1,114 @@
+.class {
+	display: grid;
+	gap: 18px;
+
+	> section {
+		display: grid;
+		gap: 12px;
+
+		> h1 {
+			margin: 0;
+			color: var(--fg-hard-3);
+			font-size: clamp(2.6rem, 18vw, 7rem);
+			font-weight: 950;
+			letter-spacing: 0;
+			line-height: 0.88;
+			text-transform: uppercase;
+		}
+
+		> turn-list {
+			display: flex;
+			flex-wrap: wrap;
+			gap: 8px;
+
+			> span {
+				border: 1px solid var(--border-soft-1);
+				border-radius: 999px;
+				color: var(--fg-soft-1);
+				padding: 7px 10px;
+				font-size: 0.82rem;
+				font-weight: 850;
+
+				&[aria-current="step"] {
+					border-color: var(--color-accent);
+					background: var(--color-accent);
+					color: var(--bg-color);
+				}
+			}
+		}
+	}
+
+	> queue-list {
+		display: grid;
+		gap: 10px;
+
+		> article {
+			display: grid;
+			grid-template-columns: 54px 74px minmax(0, 1fr);
+			gap: 10px;
+			align-items: stretch;
+			border: 1px solid var(--border-soft-1);
+			border-radius: 8px;
+			background: var(--bg-soft-1);
+			padding: 8px;
+
+			> strong {
+				display: grid;
+				place-items: center;
+				border: 1px solid var(--border-soft-1);
+				border-radius: 6px;
+				color: var(--fg-hard-2);
+				font-size: 0.84rem;
+				font-weight: 950;
+				text-transform: uppercase;
+			}
+
+			> queue-copy {
+				display: grid;
+				align-content: center;
+				gap: 5px;
+				min-width: 0;
+
+				> h2,
+				> p {
+					overflow: hidden;
+					margin: 0;
+					text-overflow: ellipsis;
+					white-space: nowrap;
+				}
+
+				> h2 {
+					color: var(--fg-hard-2);
+					font-size: 1rem;
+					font-weight: 900;
+					letter-spacing: 0;
+				}
+
+				> p {
+					color: var(--fg-soft-2);
+					font-size: 0.82rem;
+					text-transform: capitalize;
+				}
+
+				> button {
+					width: max-content;
+					border: 1px solid var(--border-soft-2);
+					border-radius: 6px;
+					background: var(--bg-color);
+					color: var(--fg-hard-1);
+					padding: 6px 10px;
+					font-size: 0.78rem;
+					font-weight: 900;
+				}
+			}
+		}
+	}
+}
+
+@media (min-width: 780px) {
+	.class {
+		> queue-list {
+			grid-template-columns: repeat(2, minmax(0, 1fr));
+		}
+	}
+}

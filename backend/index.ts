@@ -11,7 +11,8 @@ if (env.MOVIEW_MODE === `dev`) {
 
 const server = Bun.serve({
 	fetch: handleApi,
+	hostname: env.HOST,
 	port: env.PORT,
 })
 
-console.log(`Moview API listening on http://localhost:${server.port}`)
+console.log(`Moview API listening on http://${server.hostname}:${server.port}`)

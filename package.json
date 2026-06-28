@@ -18,11 +18,12 @@
 		"lint:deps": "pin-checker --ignore-workspaces",
 		"lint:eslint": "dotenvx run -- turbo run lint:eslint",
 		"lint:fix:eslint": "eslint --fix .",
-		"lint:oxlint": "dotenvx run -- turbo run lint:oxlint",
+		"lint:oxlint": "dotenvx run -- oxlint .",
 		"lint:types": "dotenvx run -- turbo run lint:types",
 		"test": "CI=true dotenvx run -- turbo run test:once --concurrency=2"
 	},
 	"devDependencies": {
+		"@celilo/capabilities": "0.5.0",
 		"@celilo/cli": "0.8.2",
 		"@celilo/e2e": "0.7.17",
 		"@dotenvx/dotenvx": "1.75.1",
@@ -30,6 +31,7 @@
 		"@dprint/markdown": "0.22.1",
 		"@dprint/oxc": "0.28.0",
 		"@dprint/toml": "0.7.0",
+		"@playwright/test": "1.61.1",
 		"@types/bun": "latest",
 		"@typescript-eslint/parser": "8.62.0",
 		"@typescript-eslint/utils": "8.62.0",
@@ -44,6 +46,7 @@
 		"jiti": "2.7.0",
 		"lasertag": "0.1.5",
 		"oxlint": "1.71.0",
+		"oxlint-tsgolint": "0.23.0",
 		"turbo": "2.10.0"
 	},
 	"peerDependencies": {

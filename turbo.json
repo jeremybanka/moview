@@ -1,5 +1,18 @@
 {
 	"$schema": "https://turbo.build/schema.json",
+	"globalDependencies": [
+		"eslint.config.ts",
+		"oxlint.config.ts",
+		"tsconfig.json"
+	],
+	"globalEnv": [
+		"AUTHENTIK_ISSUER",
+		"DATABASE_URL",
+		"HOST",
+		"MOVIEW_API_ORIGIN",
+		"MOVIEW_MODE",
+		"PORT"
+	],
 	"tasks": {
 		"build": {
 			"dependsOn": ["^build"],
@@ -7,13 +20,21 @@
 		},
 		"dev": {
 			"cache": false,
+			"interruptible": true,
 			"persistent": true
 		},
 		"lint": {
-			"dependsOn": ["lint:types"]
+			"dependsOn": ["lint:types"],
+			"outputs": []
 		},
-		"lint:eslint": {},
-		"lint:types": {},
-		"test:once": {}
+		"lint:eslint": {
+			"outputs": []
+		},
+		"lint:types": {
+			"outputs": []
+		},
+		"test:once": {
+			"outputs": []
+		}
 	}
 }
